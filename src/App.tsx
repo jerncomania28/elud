@@ -1,10 +1,15 @@
 import React from 'react';
 
+import { Routes, Route } from 'react-router-dom';
+
+//pages
+import Home from './pages/Home';
+
 const App: React.FC = () => {
   return (
-    <div>
-      <h1 className="text-4xl text-green-400"> Elud Financial App</h1>
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+    </Routes>
   );
 };
 
