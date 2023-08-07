@@ -6,4 +6,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'inter';
+}
+
+@font-face {
+  font-family: 'inter';
+  src: url(./fonts/Inter-Regular.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.h-custom {
+  height: calc(100vh - 100px);
 }
