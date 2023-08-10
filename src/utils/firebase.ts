@@ -5,11 +5,16 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  sendEmailVerification,
+  signOut,
 } from 'firebase/auth';
 
 import { doc, setDoc, getDoc, getFirestore } from 'firebase/firestore';
 
 import { toast } from 'react-toastify';
+
+//utils
+import { SignUpParametersProps } from '../components/SignUpForm/SignUpForm';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDg1BimrxeHdDupBA0E_38GHib7VvuzSEw',
@@ -22,6 +27,7 @@ const firebaseConfig = {
 initializeApp(firebaseConfig);
 
 const auth = getAuth();
+export const signOutUser = async () => await signOut(auth);
 
 const db = getFirestore();
 
@@ -52,8 +58,11 @@ const createUserDoc = async (userAuthId: string, othetProps = {}) => {
   }
 };
 
-export const createUserViaEmailAndPassword = async (userSignUpData: any) => {
-  const { email, password, first_name, last_name } = userSignUpData;
+export const createUserViaEmailAndPassword = async (
+  userSignUpData: SignUpParametersProps,
+) => {
+  const { email, password, first_name, last_name, phone_number, matric_no } =
+    userSignUpData;
 
   try {
     const createUserResponse = await createUserWithEmailAndPassword(
@@ -66,9 +75,12 @@ export const createUserViaEmailAndPassword = async (userSignUpData: any) => {
       id: createUserResponse?.user?.uid,
       displayName: `${first_name} ${last_name}`,
       email,
+      phone_number,
+      matric_no,
     });
-
-    return createUserResponse?.user?.uid;
+    if (auth.currentUser !== null) {
+      await sendEmailVerification(auth.currentUser);
+    }
   } catch (err: any) {
     console.log('create user error', err);
     if (err.code === 'auth/email-already-exists') {

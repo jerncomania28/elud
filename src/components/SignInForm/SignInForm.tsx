@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../../context/auth';
 
 //utils
 import {
@@ -32,7 +33,7 @@ const SignInForm: React.FC = () => {
 
   const navigate = useNavigate();
 
-  // const { handleCurrentUser } = useContext(AuthContext);
+  const { handleCurrentUser } = React.useContext(AuthContext);
 
   const handleViewPassword = () => {
     setViewPassword(!viewPassword);
@@ -54,9 +55,27 @@ const SignInForm: React.FC = () => {
       })
       .then((currentUser) => {
         if (currentUser) {
-          const { email, displayName, id } = currentUser;
-          // handleCurrentUser({ email, displayName, id });
-          storageUtils.setItem({ email, displayName, id });
+          const {
+            email,
+            displayName,
+            id,
+            matric_no,
+            phone_number,
+          } = currentUser;
+          handleCurrentUser({
+            email,
+            displayName,
+            id,
+            matric_no,
+            phone_number,
+          });
+          storageUtils.setItem({
+            email,
+            displayName,
+            id,
+            phone_number,
+            matric_no,
+          });
           toast.success('🦄 user logged in!', {
             position: 'top-right',
             autoClose: 5000,

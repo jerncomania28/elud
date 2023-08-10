@@ -1,10 +1,16 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 //components
 import InputField from '../InputField';
 
 // validation
 import validation, { ErrorProps } from './SignUpValidation';
+import {
+  createUserViaEmailAndPassword,
+  signOutUser,
+} from '../../utils/firebase';
 
 export interface SignUpParametersProps {
   first_name: string;
@@ -34,6 +40,8 @@ const SignUpForm: React.FC = () => {
   const [errors, setErrors] = React.useState<ErrorProps>({});
   const [viewPassword, setViewPassword] = React.useState<boolean>(false);
 
+  const navigate = useNavigate();
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setSignUpParameters({ ...signUpParameters, [name]: value });
@@ -42,8 +50,30 @@ const SignUpForm: React.FC = () => {
   const handleSubmit = () => {
     const errors = validation(signUpParameters);
     setErrors(errors);
-    setIsLoading(false);
-    console.log('sign up parameters', signUpParameters);
+
+    if (Object.keys(errors).length === 0) {
+      setIsLoading(true);
+      createUserViaEmailAndPassword(signUpParameters)
+        .then((response) => {
+          setSignUpParameters(defaultSignUpParameters);
+          console.log('response', response);
+          signOutUser();
+          toast.success('🦄 account succesfully created!!', {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+          });
+          navigate('/verify');
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    }
   };
 
   const handleViewPassword = () => {
