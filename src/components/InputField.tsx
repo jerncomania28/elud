@@ -7,7 +7,7 @@ import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons';
 interface InputFieldProps {
   label: string;
   type: string;
-  id: string;
+  id?: string;
   name: string;
   className?: string;
   labelStyle?: string;
@@ -38,7 +38,7 @@ const InputField: React.FC<InputFieldProps> = ({
       <div className={`flex  my-2 relative ${className}`}>
         <label
           htmlFor={`#${id}`}
-          className={`text-[#3475B7] text-[16px] font-[600] tracking-[2%] mb-1 ${labelStyle}`}
+          className={`text-[#3475B7] text-[14px] font-[600] tracking-[2%] mb-1 capitalize ${labelStyle}`}
         >
           {label}
         </label>

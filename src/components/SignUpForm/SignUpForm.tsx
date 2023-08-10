@@ -10,6 +10,7 @@ export interface SignUpParametersProps {
   first_name: string;
   last_name: string;
   matric_no: string;
+  phone_number: string;
   email: string;
   password: string;
   confirm_password: string;
@@ -19,6 +20,7 @@ const defaultSignUpParameters = {
   first_name: '',
   last_name: '',
   matric_no: '',
+  phone_number: '',
   email: '',
   password: '',
   confirm_password: '',
@@ -50,7 +52,7 @@ const SignUpForm: React.FC = () => {
 
   return (
     <>
-      <div className="w-[90%] md:w-[80%] relative mx-auto">
+      <div className="w-[90%] md:w-[85%] relative mx-auto">
         <div className="flex flex-col w-full relative py-3">
           <div className="flex flex-col md:flex-row w-full relative gap-0 md:gap-3">
             <div className="w-full md:w-1/2 ">
@@ -78,16 +80,32 @@ const SignUpForm: React.FC = () => {
               />
             </div>
           </div>
-          <InputField
-            label="Matric No."
-            type="text"
-            name="matric_no"
-            id="matric_no"
-            className="flex-col"
-            handleChange={handleChange}
-            value={signUpParameters.matric_no}
-            error={errors?.matric_no}
-          />
+          <div className="flex flex-col md:flex-row w-full relative gap-0 md:gap-3">
+            <div className="w-full md:w-1/2">
+              <InputField
+                label="Matric No."
+                type="text"
+                name="matric_no"
+                id="matric_no"
+                className="flex-col"
+                handleChange={handleChange}
+                value={signUpParameters.matric_no}
+                error={errors?.matric_no}
+              />
+            </div>
+            <div className="w-full md:w-1/2">
+              <InputField
+                label="Phone Number"
+                type="number"
+                name="phone_number"
+                id="phone_number"
+                className="flex-col"
+                handleChange={handleChange}
+                value={signUpParameters.phone_number}
+                error={errors?.phone_number}
+              />
+            </div>
+          </div>
 
           <InputField
             label="Student e-mail"
@@ -99,6 +117,7 @@ const SignUpForm: React.FC = () => {
             value={signUpParameters.email}
             error={errors?.email}
           />
+
           <InputField
             label="Password"
             type={viewPassword ? 'text' : 'password'}
@@ -126,7 +145,7 @@ const SignUpForm: React.FC = () => {
       </div>
 
       <button
-        className={`w-full mx-auto py-2 text-center text-[#0D1D2D] bg-[#F4AA00] text-[22px] font-[600] rounded-md outline-none border-none ${
+        className={`w-full mx-auto py-1 py-2 text-center text-[#0D1D2D] bg-[#F4AA00] text-[16px] font-[600] rounded-md outline-none border-none ${
           isLoading ? 'opacity-50' : ''
         }`}
         onClick={handleSubmit}

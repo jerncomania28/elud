@@ -4,6 +4,7 @@ export interface ErrorProps {
   first_name?: string;
   last_name?: string;
   matric_no?: string;
+  phone_number?: string;
   email?: string;
   password?: string;
   confirm_password?: string;
@@ -25,10 +26,14 @@ const validation = (values: SignUpParametersProps) => {
     errors.last_name = 'last name is required!';
   }
 
+  if (!values.phone_number) {
+    errors.phone_number = 'phone number is required!';
+  }
+
   if (!values.matric_no) {
-    errors.email = 'Matric No. is required.';
+    errors.matric_no = 'Matric No. is required.';
   } else if (!matricNoRegex.test(values.matric_no)) {
-    errors.email = 'Matric No. is invalid.';
+    errors.matric_no = 'Matric No. is invalid.';
   }
 
   if (!values.email) {

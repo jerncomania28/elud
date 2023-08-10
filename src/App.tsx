@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 //pages
 import Home from './pages/Home';
 import SignUp from './pages/SignUp';
+import SignIn from './pages/SignIn';
 import ErrorPage from './pages/ErrorPage';
 
 //layouts
@@ -19,6 +20,14 @@ const App: React.FC = () => {
         element={
           <AuthLayout>
             <SignUp />
+          </AuthLayout>
+        }
+      />
+      <Route
+        path="/signin"
+        element={
+          <AuthLayout>
+            <SignIn />
           </AuthLayout>
         }
       />

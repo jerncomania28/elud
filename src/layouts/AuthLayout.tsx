@@ -27,7 +27,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
           </p>
         </div>
       </div>
-      <div className="w-full h-full md:w-[70%] relative bg-[#EFF5FB] flex items-center">
+      <div className="md:w-[70%] w-full h-full relative overflow-y-scroll bg-[#EFF5FB] py-4 px-3 md:px-6 flex justify-center items-center">
         {children}
       </div>
     </div>

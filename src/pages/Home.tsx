@@ -8,7 +8,7 @@ import Footer from '../components/Footer';
 import Testimony from '../components/Testimony';
 import Section from '../components/Section';
 import Tag from '../components/Tag';
-// import Tip from '../components/Tip';
+import Tip from '../components/Tip';
 
 // types
 import { TagProps } from '../components/Tag';
@@ -16,12 +16,11 @@ import { TagProps } from '../components/Tag';
 //assets
 import BgHero from '../assets/bg-hero.svg';
 import Hero from '../assets/hero.svg';
-import LongQueue from '../assets/long-queue.svg';
+import LongQueue from '../assets/long-queue.png';
 import Transactions from '../assets/transactions.svg';
 import Border from '../assets/border.svg';
 import AccountBorder from '../assets/AccountBorder.svg';
-import AccounMgt from '../assets/account-management.svg';
-import GetStarted from '../assets/how-to-get-started.svg';
+import AccounMgt from '../assets/account-management.png';
 
 const Home: React.FC = () => {
   const countRef = React.useRef(null);
@@ -186,11 +185,22 @@ const Home: React.FC = () => {
         </button>
       </Section>
 
-      <div className="w-[90%] mx-auto max-w-[1200px] relative py-6">
-        <img src={GetStarted} className="w-full" />
+      <div className="w-[90%] mx-auto max-w-[1200px] relative py-6 bg-pre-footer-bg bg-no-repeat bg-bottom h-[627px] my-6 border-[1px] border-solid border-gray-300 rounded-xl flex flex-col justify-center items-center px-2 ">
+        <h1 className="font-[600] text-[20px]  md:text-[24px] text-[#3B3A5A] mb-8 capitalize">
+          How to get Started on Elud
+        </h1>
+        <div className="flex gap-6 flex-wrap justify-center">
+          <div>
+            <Tip numberBg="bg-[#B0F7E0]" headerBg="bg-[#E6FCF5]" index={1} />
+          </div>
+          <div>
+            <Tip numberBg="bg-[#FCE5B0]" headerBg="bg-[#FEF7E6]" index={2} />
+          </div>
+          <div>
+            <Tip numberBg="bg-[#DCDBF2]" headerBg="bg-[#F4F3FB]" index={3} />
+          </div>
+        </div>
       </div>
-
-      {/* <Tip /> */}
 
       <Footer />
     </div>
