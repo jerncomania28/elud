@@ -7,6 +7,7 @@ import {
   signInWithEmailAndPassword,
   sendEmailVerification,
   signOut,
+  onAuthStateChanged,
 } from 'firebase/auth';
 
 import { doc, setDoc, getDoc, getFirestore } from 'firebase/firestore';
@@ -118,6 +119,10 @@ export const createUserViaEmailAndPassword = async (
       });
     }
   }
+};
+
+export const authStateChange = async (callback: (user: unknown) => void) => {
+  return onAuthStateChanged(auth, callback);
 };
 
 export const signInViaEmailAndPassword = async (

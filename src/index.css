@@ -16,6 +16,19 @@
   font-style: normal;
 }
 
-.h-custom {
-  height: calc(100vh - 100px);
+.nav-link svg path {
+  fill: white;
+  stroke: white;
+}
+
+.active svg path {
+  fill: #f4aa00; /* Default color */
+  stroke: #f4aa00;
+}
+
+.logout:hover,
+.logout:hover svg path {
+  color: #f4aa00;
+  fill: #f4aa00;
+  stroke: #f4aa00;
 }
