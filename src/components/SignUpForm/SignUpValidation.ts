@@ -16,7 +16,10 @@ const validation = (values: SignUpParametersProps) => {
     '^(?=.{8,32}$)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).*',
   );
 
-  const matricNoRegex = new RegExp('^\\d{2}/\\d{2}[A-Z]{2}\\d{3}$');
+  const matricNoRegex = new RegExp('^\\d{2}/\\d{2}[A-Za-z]{2}\\d{3}$');
+  const emailRegex = new RegExp(
+    '^[0-9a-zA-Z]+@[a-zA-Z]+\\.students\\.edu\\.ng$',
+  );
 
   if (!values.first_name) {
     errors.first_name = 'first name is required!';
@@ -38,7 +41,7 @@ const validation = (values: SignUpParametersProps) => {
 
   if (!values.email) {
     errors.email = 'Email is required.';
-  } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+  } else if (!emailRegex.test(values.email)) {
     errors.email = 'Email is invalid.';
   }
   if (!values.password) {

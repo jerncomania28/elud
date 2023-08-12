@@ -17,7 +17,7 @@ import { TagProps } from '../components/Tag';
 import BgHero from '../assets/bg-hero.svg';
 import Hero from '../assets/hero.svg';
 import LongQueue from '../assets/long-queue.png';
-import Transactions from '../assets/transactions.svg';
+import Transactions from '../assets/transactions.png';
 import Border from '../assets/border.svg';
 import AccountBorder from '../assets/AccountBorder.svg';
 import AccounMgt from '../assets/account-management.png';
@@ -63,11 +63,11 @@ const Home: React.FC = () => {
         />
         <div className="w-full flex flex-col md:flex-row justify-between items-center">
           <div className="w-full py-[2rem] md:py-auto md:w-1/2 relative">
-            <div className="w-[90%] md:w-[80%] mx-auto">
-              <h4 className="text-[#4E4C76] font-[500] text-[20px] tracking-[2%] leading-[40px] mb-4">
+            <div className="w-[90%] lg:w-[80%] mx-auto">
+              <h4 className="text-[#807EC3] font-[500] text-[20px] tracking-[2%] leading-[40px] mb-4">
                 Welcome! Future platform
               </h4>
-              <h1 className="text-white text-[30px] md:text-[40px] font-[700] tracking-[2%] leading-[40px] md:leading-[51px] mb-4">
+              <h1 className="text-white text-[25px] lg:text-[40px] font-[700] tracking-[2%] mb-4 leading-[35px] lg:leading-[50px]">
                 Simplify Your Payments: Easing Student Stress with our Seamless
                 E-Wallet Platform!
               </h1>
@@ -81,20 +81,19 @@ const Home: React.FC = () => {
                 <FontAwesomeIcon icon={faArrowRight} className="mx-2" />
               </button>
 
-              <div
-                className="mt-6 flex justify-between w-full md:w-[90%] relative"
-                ref={countRef}
-              >
+              <div className="mt-6 flex w-full relative" ref={countRef}>
                 <Testimony
                   base={100}
                   subtext="Active Users"
                   componentRef={countRef}
                   isMoney
+                  className="mr-4"
                 />
                 <Testimony
                   base={5.0}
                   subtext="Reviews"
                   componentRef={countRef}
+                  className="mx-4"
                 />
                 <Testimony
                   base={10}
@@ -102,6 +101,7 @@ const Home: React.FC = () => {
                   componentRef={countRef}
                   isMoney
                   isUnit
+                  className="ml-4"
                 />
               </div>
             </div>
@@ -191,13 +191,31 @@ const Home: React.FC = () => {
         </h1>
         <div className="flex gap-6 flex-wrap justify-center">
           <div>
-            <Tip numberBg="bg-[#B0F7E0]" headerBg="bg-[#E6FCF5]" index={1} />
+            <Tip
+              numberBg="bg-[#B0F7E0]"
+              headerBg="bg-[#E6FCF5]"
+              index={1}
+              header="Click on Registration Button"
+              text="Sign Up with your Student E-mail address"
+            />
           </div>
           <div>
-            <Tip numberBg="bg-[#FCE5B0]" headerBg="bg-[#FEF7E6]" index={2} />
+            <Tip
+              numberBg="bg-[#FCE5B0]"
+              headerBg="bg-[#FEF7E6]"
+              index={2}
+              header="Verify your Student Email"
+              text="Click on the link sent to your student E-mail"
+            />
           </div>
           <div>
-            <Tip numberBg="bg-[#DCDBF2]" headerBg="bg-[#F4F3FB]" index={3} />
+            <Tip
+              numberBg="bg-[#DCDBF2]"
+              headerBg="bg-[#F4F3FB]"
+              index={3}
+              header="Hurray You’re in"
+              text="Complete your profile by setting transaction Pin"
+            />
           </div>
         </div>
       </div>

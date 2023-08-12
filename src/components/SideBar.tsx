@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
@@ -142,9 +142,9 @@ const SideBar: React.FC = () => {
             className="text-white w-[32px] h-[32px] self-end pb-5 px-4 md:hidden"
             onClick={handleMobile}
           />
-          <div className="w-[60%] mx-auto relative">
+          <Link to="/" className="w-[60%] mx-auto relative cursor-pointer">
             <img src={Logo} alt="logo-img" className="py-4 " />
-          </div>
+          </Link>
         </div>
 
         {/* dashboard menu items list */}

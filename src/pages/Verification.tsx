@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 //assets
 import BgHero from '../assets/bg-hero.svg';
@@ -16,9 +17,9 @@ const Verification: React.FC = () => {
         className="w-full h-full absolute object-cover mix-blend-overlay"
       />
       <div className="flex flex-col py-4 px-6 w-[80%] max-w-[500px] rounded-md bg-white relative items-center justify-center">
-        <div className="w-[120px] relative">
+        <Link to="/" className="w-[120px] relative cursor-pointer">
           <img src={FormLogo} alt="logo" className="w-full" />
-        </div>
+        </Link>
         <p className="text-[14px] md:text-[16px] text-[#1D4267] font-[500] text-center my-6">
           A link has been sent to your student mail Click on the Link to
           Complete your sign up process

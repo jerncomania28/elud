@@ -46,7 +46,7 @@ const DropDown: React.FC = () => {
       />
 
       {isDropDown && (
-        <div className="absolute w-[150px] md:w-[200px] flex flex-col top-[3rem] md:top-[3.5rem] right-0 bg-white rounded-md shadow opacity-100 font-[400] text-[14px]">
+        <div className="absolute w-[150px] md:w-[200px] flex flex-col top-[3rem] md:top-[3.5rem] right-0 bg-white rounded-md shadow opacity-100 font-[400] text-[14px] z-20">
           <Link
             to="/dashboard"
             className="w-full p-3 border-[#ddd] border-b-[1px] border-solid hover:bg-[#C7DBEF] flex rounded-t-md items-center "

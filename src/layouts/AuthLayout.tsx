@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 //assets
 import Logo from '../assets/logo.svg';
@@ -18,16 +19,16 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
           className="w-full h-full absolute object-cover mix-blend-overlay"
         />
         <div className="flex flex-col px-6 py-4">
-          <div className="w-[120px] relative">
+          <Link to="/" className="w-[120px] relative cursor-pointer">
             <img src={Logo} alt="auth-logo" className="w-full" />
-          </div>
+          </Link>
           <p className="font-[400] text-[20px] text-white mt-4">
             Simplify Your Payments: Easing Student Stress with our Seamless
             E-Wallet Platform!
           </p>
         </div>
       </div>
-      <div className="md:w-[70%] w-full h-full relative overflow-y-scroll bg-[#EFF5FB] py-4 px-3 md:px-6 flex justify-center items-center">
+      <div className="md:w-[70%] w-full h-full relative overflow-y-scroll bg-[#EFF5FB] px-3 md:px-6 flex justify-center items-start md:items-center">
         {children}
       </div>
     </div>
