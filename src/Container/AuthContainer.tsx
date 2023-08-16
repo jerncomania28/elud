@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 //assets
 import FormLogo from '../assets/form-logo.svg';
@@ -10,11 +10,14 @@ interface AuthContainerProps {
 
 const AuthContainer: React.FC<AuthContainerProps> = ({ children }) => {
   return (
-    <div className={`w-full relative flex justify-center items-center `}>
+    <div className={`w-full relative flex justify-center items-center my-6`}>
       <div className="w-[95%] max-w-[600px] relative pb-[30px] flex flex-col justify-center items-center bg-white py-4 rounded-lg shadow">
-        <div className="w-[119px] h-[51px] relative my-4">
+        <Link
+          to="/"
+          className="w-[119px] h-[51px] relative my-4 cursor-pointer"
+        >
           <img src={FormLogo} alt="logo" className="w-full h-full" />
-        </div>
+        </Link>
         <div className="w-[90%] relative mx-auto rounded-xl my-2">
           <NavLink
             to="/signup"

@@ -148,29 +148,35 @@ const SignUpForm: React.FC = () => {
             error={errors?.email}
           />
 
-          <InputField
-            label="Password"
-            type={viewPassword ? 'text' : 'password'}
-            name="password"
-            id="password"
-            className="flex-col"
-            handleChange={handleChange}
-            viewPassword={viewPassword}
-            handleViewPassword={handleViewPassword}
-            value={signUpParameters.password}
-            error={errors?.password}
-            isPassword
-          />
-          <InputField
-            label="Confirm Password"
-            type="password"
-            name="confirm_password"
-            id="confirm_password"
-            className="flex-col"
-            handleChange={handleChange}
-            value={signUpParameters.confirm_password}
-            error={errors?.confirm_password}
-          />
+          <div className="flex flex-col md:flex-row w-full relative gap-0 md:gap-3">
+            <div className="w-full md:w-1/2">
+              <InputField
+                label="Password"
+                type={viewPassword ? 'text' : 'password'}
+                name="password"
+                id="password"
+                className="flex-col"
+                handleChange={handleChange}
+                viewPassword={viewPassword}
+                handleViewPassword={handleViewPassword}
+                value={signUpParameters.password}
+                error={errors?.password}
+                isPassword
+              />
+            </div>
+            <div className="w-full md:w-1/2">
+              <InputField
+                label="Confirm Password"
+                type="password"
+                name="confirm_password"
+                id="confirm_password"
+                className="flex-col"
+                handleChange={handleChange}
+                value={signUpParameters.confirm_password}
+                error={errors?.confirm_password}
+              />
+            </div>
+          </div>
         </div>
       </div>
 

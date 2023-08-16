@@ -32,7 +32,7 @@ const DropDown: React.FC = () => {
 
   return (
     <div
-      className="max-w-[200px] relative font-[700] bg-[#EFF5FB] text-[#122940] tracking-[2%] whitespace-nowrap text-[13px] md:text-[16px] flex items-center justify-center p-2 md:p-3 rounded-md cursor-pointer"
+      className="max-w-[200px] relative font-[700] bg-[#EFF5FB] text-[#122940] tracking-[2%] whitespace-nowrap text-[13px] md:text-[16px] flex items-center justify-center p-2 md:p-3 rounded-sm cursor-pointer"
       onClick={handleDropDown}
     >
       <FontAwesomeIcon
@@ -46,7 +46,7 @@ const DropDown: React.FC = () => {
       />
 
       {isDropDown && (
-        <div className="absolute w-[150px] md:w-[200px] flex flex-col top-[3rem] md:top-[3.5rem] right-0 bg-white rounded-md shadow opacity-100 font-[400] text-[14px]">
+        <div className="absolute w-[150px] md:w-[200px] flex flex-col top-[3rem] md:top-[3.5rem] right-0 bg-white rounded-md shadow opacity-100 font-[400] text-[14px] z-20">
           <Link
             to="/dashboard"
             className="w-full p-3 border-[#ddd] border-b-[1px] border-solid hover:bg-[#C7DBEF] flex rounded-t-md items-center "

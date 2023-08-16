@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,19 +8,36 @@ import { AuthContext } from '../context/auth';
 
 //components
 import Button from './Button';
+import DropDown from './DropDown';
 
 //assets
 import Logo from '../assets/logo.svg';
 
+// utils
+import { authStateChange } from '../utils/firebase';
+
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, handleIsLoggedIn } = useContext(AuthContext);
 
   const handleIsOpen = () => {
     setIsOpen(!isOpen);
   };
 
   const menuItems: string[] = ['features', 'about', 'contact'];
+
+  React.useEffect(() => {
+    const unsubscribeFn = () => {
+      const unsubscribe = authStateChange((user) => {
+        const _ac = user ? true : false;
+        handleIsLoggedIn(_ac);
+      });
+
+      return unsubscribe;
+    };
+
+    unsubscribeFn();
+  }, []);
 
   const handleHeadeButttosDisplay = () => {
     if (!isLoggedIn) {
@@ -43,6 +61,8 @@ const Header: React.FC = () => {
           </Button>
         </div>
       );
+    } else {
+      return <DropDown />;
     }
   };
 
@@ -72,7 +92,7 @@ const Header: React.FC = () => {
                 <Link
                   to={'#'}
                   key={_idx}
-                  className="capitalize mx-2 font-[600] text-gray tracking-[2%] text-[16px] cursor-pointer whitespace-nowrap"
+                  className="capitalize mx-3 font-[600] text-gray tracking-[2%] text-[16px] cursor-pointer whitespace-nowrap"
                 >
                   {item}
                 </Link>

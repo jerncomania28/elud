@@ -1,27 +1,20 @@
-import { DocumentData } from 'firebase/firestore/lite';
 import React, { SetStateAction, createContext, useState } from 'react';
 
-interface currentUserProps extends DocumentData {
-  email: string;
-  displayName: string;
-  id: string;
-  matric_no: string;
-  phone_number: string;
-}
+//types
+import { currentUserProps, ConfirmPaymentProps } from '../types';
 
-const defaultCurrentUser = {
-  email: '',
-  displayName: '',
-  id: '',
-  matric_no: '',
-  phone_number: '',
-};
+//defaults
+import { defaultConfirmPayment, defaultCurrentUser } from '../constants';
 
 interface InitialStateProps {
   isLoggedIn: boolean;
   currentUser: currentUserProps;
   isMobile: boolean;
+  isMakePayment: boolean;
+  confirmPaymentData: ConfirmPaymentProps;
+  handleMakePayment: () => void;
   setIsMobile: React.Dispatch<SetStateAction<boolean>>;
+  setConfirmPaymentData: React.Dispatch<SetStateAction<ConfirmPaymentProps>>;
   handleIsLoggedIn: (_ac: boolean) => void;
   handleCurrentUser: (currentUser: currentUserProps) => void;
   handleMobile: () => void;
@@ -30,9 +23,13 @@ interface InitialStateProps {
 const initialState = {
   isLoggedIn: false,
   isMobile: false,
+  isMakePayment: false,
+  confirmPaymentData: defaultConfirmPayment,
+  handleMakePayment: () => null,
   handleIsLoggedIn: () => null,
   currentUser: defaultCurrentUser,
   handleCurrentUser: () => null,
+  setConfirmPaymentData: () => null,
   setIsMobile: () => null,
   handleMobile: () => null,
 };
@@ -46,6 +43,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   );
   const [isMobile, setIsMobile] = React.useState<boolean>(false);
 
+  const [isMakePayment, setIsMakePayment] = React.useState<boolean>(false);
+  const [confirmPaymentData, setConfirmPaymentData] = React.useState<
+    ConfirmPaymentProps
+  >(defaultConfirmPayment);
+
   const handleIsLoggedIn = (_ac: boolean) => {
     setIsLoggedIn(_ac);
   };
@@ -58,14 +60,22 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     setIsMobile(!isMobile);
   };
 
+  const handleMakePayment = () => {
+    setIsMakePayment(!isMakePayment);
+  };
+
   const value = {
     currentUser,
     isLoggedIn,
     isMobile,
+    isMakePayment,
+    confirmPaymentData,
+    handleMakePayment,
     handleIsLoggedIn,
     handleCurrentUser,
     handleMobile,
     setIsMobile,
+    setConfirmPaymentData,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

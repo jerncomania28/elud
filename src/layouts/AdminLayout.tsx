@@ -6,6 +6,7 @@ import { AuthContext } from '../context/auth';
 
 //components
 import SideBar from '../components/SideBar';
+import ConfirmPayment from '../components/modals/ConfirmPayment';
 
 //utils
 import { authStateChange } from '../utils/firebase';
@@ -24,6 +25,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
     handleIsLoggedIn,
     handleCurrentUser,
     handleMobile,
+    isMakePayment,
   } = useContext(AuthContext);
 
   React.useEffect(() => {
@@ -56,7 +58,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
             <img src={Logo} className="w-[90px] h-[40px]" />
             <div></div>
           </div>
-          <div className="w-full h-full relative overflow-y-scroll py-4 px-3 md:px-6">
+          <div className="w-full h-screen relative overflow-y-scroll py-4 px-3 md:px-6 scroll">
             {children}
           </div>
         </div>
@@ -68,6 +70,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
           </div>
         </div>
       )}
+      {isMakePayment && <ConfirmPayment />}
     </>
   );
 };

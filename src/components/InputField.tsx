@@ -48,7 +48,7 @@ const InputField: React.FC<InputFieldProps> = ({
             type={type}
             id={id}
             name={name}
-            className={`p-[0.5rem] border-[1px] border-solid border-[#A0C2E4] outline-none rounded-md indent-[10px] w-full font-[500] tracking-[2%]`}
+            className={`p-[0.5rem] border-[1px] border-solid border-[#A0C2E4] outline-none rounded-md indent-[10px] font-[500] tracking-[2%] w-full`}
             value={value}
             onChange={handleChange}
           />
