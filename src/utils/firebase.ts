@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { initializeApp } from 'firebase/app';
+import { v4 as uuidv4 } from 'uuid';
 
 import {
   getAuth,
@@ -136,4 +137,19 @@ export const getCurrentUser = async (uid: string) => {
   const currentUserDocRef = doc(db, 'users', uid);
   const currentUser = await getDoc(currentUserDocRef);
   return currentUser.data();
+};
+
+export const createTransaction = async (transactionData: any) => {
+  const uniqueId = uuidv4();
+  const transactionDocRef = doc(db, 'transactions', uniqueId);
+
+  const createdAt = new Date();
+  try {
+    return await setDoc(transactionDocRef, {
+      createdAt,
+      ...transactionData,
+    });
+  } catch (err) {
+    console.log('error initialing transaction', err);
+  }
 };

@@ -32,7 +32,7 @@ const DropDown: React.FC = () => {
 
   return (
     <div
-      className="max-w-[200px] relative font-[700] bg-[#EFF5FB] text-[#122940] tracking-[2%] whitespace-nowrap text-[13px] md:text-[16px] flex items-center justify-center p-2 md:p-3 rounded-md cursor-pointer"
+      className="max-w-[200px] relative font-[700] bg-[#EFF5FB] text-[#122940] tracking-[2%] whitespace-nowrap text-[13px] md:text-[16px] flex items-center justify-center p-2 md:p-3 rounded-sm cursor-pointer"
       onClick={handleDropDown}
     >
       <FontAwesomeIcon
